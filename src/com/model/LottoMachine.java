@@ -1,12 +1,15 @@
 package com.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.TreeSet;
 
 public class LottoMachine implements LottoFunction{
 	
-	private int lottoMax;
+	protected int lottoMax;
 	private HashSet<Integer> hashSet;
 	private TreeSet<Integer> treeSet;
 	
@@ -49,6 +52,39 @@ public class LottoMachine implements LottoFunction{
 			treeSet.add(new Random().nextInt(lottoMax) + 1);
 		}
 		return treeSet;
+	}
+
+	@Override
+	public void judgment(HashSet<HashSet> hashSet, TreeSet<Integer> treeSet) {
+		
+		Set<Integer> set = new TreeSet<>();
+		List<Integer> list = new ArrayList<>();
+		
+		for(HashSet h : hashSet) {
+			for(Integer i : treeSet) {
+				if(h.contains(i)) {
+					set.add(i);
+					list.add(i);
+				}
+			}
+		}
+		
+		System.out.printf("中獎號碼：%s，共中 %d 個%n", set, set.size());
+		System.out.printf("全部中獎號碼：%s，全部共中 %d 個%n", list, list.size());
+	}
+	
+	public void judgment(List<Integer> list, Integer[] arr) {
+		Set<Integer> set = new TreeSet<>();
+		
+		for(int i : list) {
+			for(int j : arr) {
+				if(i == j) {
+					set.add(j);
+				}
+			}
+		}
+		
+		System.out.printf("中獎號碼：%s，共中 %d 個%n", set, set.size());
 	}
 
 }
