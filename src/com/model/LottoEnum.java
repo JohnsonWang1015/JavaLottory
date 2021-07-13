@@ -4,5 +4,5 @@ public enum LottoEnum {
 	BIGLOTTO, 
 	POWERLOTTO,
 	TODAY539,
-	SPORTS;
+	DOUBLEWIN;
 }

@@ -28,7 +28,7 @@ public class MainClass {
 		Integer[] treeArr = new Integer[tree.size()];
 
 		do {
-			System.out.print("1)大樂透 2)威力彩 3)今彩539 4)運動彩 5)結束：");
+			System.out.print("1)大樂透 2)威力彩 3)今彩539 4)雙贏彩 5)結束：");
 			keyin = scanner.nextInt();
 			
 			if(keyin < 1 && keyin > 5) {
@@ -46,7 +46,7 @@ public class MainClass {
 						machine.setLottoState(LottoEnum.TODAY539);
 						break;
 					case 4:
-						machine.setLottoState(LottoEnum.SPORTS);
+						machine.setLottoState(LottoEnum.DOUBLEWIN);
 						break;
 				}
 				if(keyin == 5) break;
@@ -66,7 +66,7 @@ public class MainClass {
 								
 								for(int i=0; i<choose; i++) {
 									hi = machine.pc_choose();
-									System.out.printf("第 %02d 次電腦選號：%s%n", i+1, hi);
+									System.out.printf("第 %03d 次電腦選號：%s%n", i+1, hi);
 									hashSet.add(hi);
 								}
 								tree = machine.open();
@@ -85,7 +85,7 @@ public class MainClass {
 								SelfChoose self = new SelfChoose();
 								
 								for(int i=1; i<=choose; i++) {
-									System.out.printf("第 %02d 次自選號碼：%n", i);
+									System.out.printf("第 %03d 次自選號碼：%n", i);
 									for(int j=0; j<6; j++) {
 										
 										System.out.printf("第 %d 次輸入：", j+1);

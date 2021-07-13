@@ -10,6 +10,7 @@ import java.util.TreeSet;
 public class LottoMachine implements LottoFunction{
 	
 	protected int lottoMax;
+	private int ballMax;
 	private HashSet<Integer> hashSet;
 	private TreeSet<Integer> treeSet;
 	
@@ -17,15 +18,19 @@ public class LottoMachine implements LottoFunction{
 		switch(state) {
 			case BIGLOTTO:
 				lottoMax = 49;
+				ballMax = 6;
 				break;
 			case POWERLOTTO:
 				lottoMax = 38;
+				ballMax = 6;
 				break;
 			case TODAY539:
 				lottoMax = 39;
+				ballMax = 5;
 				break;
-			case SPORTS:
-				lottoMax = 30;
+			case DOUBLEWIN:
+				lottoMax = 24;
+				ballMax = 12;
 				break;
 		}
 	}
@@ -35,7 +40,7 @@ public class LottoMachine implements LottoFunction{
 		
 		HashSet<Integer> hashSet = new HashSet<>();
 		
-		while(hashSet.size() < 6) {
+		while(hashSet.size() < ballMax) {
 			int random = new Random().nextInt(lottoMax) + 1;
 			hashSet.add(random);
 		}
@@ -48,7 +53,7 @@ public class LottoMachine implements LottoFunction{
 		
 		TreeSet<Integer> treeSet = new TreeSet<>();
 		
-		while(treeSet.size() < 6) {
+		while(treeSet.size() < ballMax) {
 			treeSet.add(new Random().nextInt(lottoMax) + 1);
 		}
 		return treeSet;
